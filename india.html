@@ -125,7 +125,7 @@ li a:hover:not(.active) {
   <nav>
     <ul>
       <li><a class="active" href="index.html">Country</a></li>
-      <li><a href="india.html">India</a></li>
+      <li><a href="#India">India</a></li>
       <li><a href="#London">London</a></li>
       <li><a href="#Paris">Paris</a></li>
       <li><a href="#Tokyo">Tokyo</a></li>
@@ -133,7 +133,19 @@ li a:hover:not(.active) {
   </nav>
   
   <article>
-      Welcome.....!
+    <div class="search-container">  
+    <form action="index.html">    
+      <input list="City" type="text" placeholder="Search For City......." name="search">
+        <datalist id="City">
+          <option value="Amravati">
+          <option value="Akola">
+          <option value="Bhopal">
+          <option value="Pune">
+          <option value="Mumbai">
+        </datalist>
+      <input type="submit" value="Add">
+   </form>
+    </div>  
   </article>
 
 </section>
