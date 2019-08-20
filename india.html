@@ -2,20 +2,15 @@
 <html >
 <head>
 <title>CSS Template</title>
-
-    <link rel="stylesheet" type="text/css" href="style.css"/>
-
+  <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
+
 <body>
-
 <h2>CSS Layout Float</h2>
-
 <header>
   <h2>Header</h2>
 </header>
-
 <section>
-  
   <nav>
     <ul>
       <li><a class="active" href="index.html">Country</a></li>
@@ -27,26 +22,32 @@
   </nav>
   
   <article>
-    <div class="search-container">  
-    <form action="india.html">    
-      <input list="City" type="text" placeholder="Search For City......." name="search">
-        <datalist id="City">
-          <option value="Amravati">
-          <option value="Akola">
-          <option value="Bhopal">
-          <option value="Pune">
-          <option value="Mumbai">
-        </datalist>
-      <input type="submit" value="Add">
-   </form>
-    </div>  
+    <div class="search-container">   
+        <input id="AddCity" list="City" type="text" placeholder="Search For City......." name="search">
+        <button onclick="myFunction()">Add</button>
+    </div> 
+   
+   <p id="demo1" ></p> 
+  
+   <div class="printData">
+   
+  </div>
+
   </article>
-
 </section>
-
 <footer>
   <p>Footer</p>
 </footer>
+
+ <script>
+      var city = ["Amravati", "Akola", "Pune", "Mumbai"];
+      document.getElementById("demo1").innerHTML= city;
+      function myFunction() {
+        newCity = document.getElementById('AddCity').value;
+        city.push(newCity);
+        document.getElementById("demo1").innerHTML = city;
+      }
+  </script>
 
 </body>
 </html>
