@@ -1,0 +1,107 @@
+
+/*Part 1 Basic structure */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  background-color: #4CAF50;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 15px;
+  color: white;
+}
+
+nav {
+  float: left;
+  width: 30%;
+  height: 400px; 
+  background: #ccc;
+  padding: 20px;
+}
+
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: #f1f1f1;
+  height: 400px;
+}
+
+
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+footer {
+  background-color: #777;
+   padding: 10px 20px;
+  text-align: center;
+  font-size: 15px;
+  color: white;
+}
+
+
+/*************************************************************/
+/*Part 2 Side menu */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 18px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+/*************************************************************/
+
+/*Part 3 Search button Drop Down */
+
+.search-container{
+  text-align: center;
+  color: white;
+} 
+
+.search-container input {
+  padding: 0px;
+  height: 40px;
+  width: 270px;
+
+  font-size: 16px;
+
+}
+
+.search-container button {
+    box-sizing: border-box;
+  padding: 20px 0px 12px 25px;
+}
+
+
+/*************************************************************/
+  
