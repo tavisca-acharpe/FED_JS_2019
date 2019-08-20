@@ -107,14 +107,12 @@ li a:hover:not(.active) {
 
 .search-container button {
     box-sizing: border-box;
-
   padding: 20px 0px 12px 25px;
-  
 }
 
 
 /*************************************************************/
-
+  
 </style>
 </head>
 <body>
@@ -129,18 +127,27 @@ li a:hover:not(.active) {
   
   <nav>
     <ul>
-      <li><a class="active" href="#India">Country</a></li>
-      <li><a href="#">India</a></li>
-      <li><a href="#">London</a></li>
-      <li><a href="#">Paris</a></li>
-      <li><a href="#">Tokyo</a></li>
+      <li><a class="active" href="index.html">Country</a></li>
+      <li><a href="#India">India</a></li>
+      <li><a href="#London">London</a></li>
+      <li><a href="#Paris">Paris</a></li>
+      <li><a href="#Tokyo">Tokyo</a></li>
     </ul>
   </nav>
   
   <article>
-    <div class="search-container">      
-      <input type="text" placeholder="Search For City......." name="search">
-      <button type="submit"></button>  
+    <div class="search-container">  
+    <form action="index.html">    
+      <input list="City" type="text" placeholder="Search For City......." name="search">
+        <datalist id="City">
+          <option value="Amravati">
+          <option value="Akola">
+          <option value="Bhopal">
+          <option value="Pune">
+          <option value="Mumbai">
+        </datalist>
+      <input type="submit">
+   </form>
     </div>  
   </article>
 
