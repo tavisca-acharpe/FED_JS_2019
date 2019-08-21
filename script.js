@@ -1,5 +1,5 @@
   
-var listCity = ["Amravti","Akola","Pune","Mumbai"];
+var listCity = [];
 
 function preList()
 {
@@ -14,13 +14,15 @@ function preList()
      li.appendChild(t);
     document.getElementById("myUL").appendChild(li);
   }
-
+  listCity=retrievedData;
 }
 
   alert(retrievedData);
  
-      function myFunction() {        
+      function myFunction() { 
+       var flag=0;       
         var inputValue = document.getElementById("myInput").value;
+        inputValue=inputValue.toUpperCase();
         var li = document.createElement("li");
         t = document.createTextNode(inputValue);
         li.appendChild(t);  
@@ -28,10 +30,24 @@ function preList()
         if (inputValue === '') {
          alert("You must write something!");
         } else {
+        for(let i=0; i<listCity.length;i++)
+        {
+          if(inputValue===listCity[i])
+          {
+            flag=1;
+          }
+        }
+        if(flag===1)
+        {
+            alert("already present");
+        }
+        else
+        {
         document.getElementById("myUL").appendChild(li);
         listCity.push(inputValue);
         localStorage.setItem("city", JSON.stringify(listCity));
         }
+      }
         document.getElementById("myInput").value = "";
       }
 
