@@ -22,32 +22,56 @@
   </nav>
   
   <article>
+    <p id="demo1" ></p> 
     <div class="search-container">   
-        <input id="AddCity" list="City" type="text" placeholder="Search For City......." name="search">
+        <input type="text" id="myInput" onkeyup="mySearchFunction()" placeholder="Search for City.." title="Type in a name">
         <button onclick="myFunction()">Add</button>
-    </div> 
-   
-   <p id="demo1" ></p> 
-  
-   <div class="printData">
-   
-  </div>
+        <ul id="myUL">
+         <li><a href="#">Amravati</a></li>
+         <li><a href="#">Akola</a></li>
 
+         <li><a href="#">pune</a></li>
+          <li><a href="#">Mumbai</a></li>
+
+          <li><a href="#">Delhi</a></li>
+          <li><a href="#">Nahshik</a></li>
+          <li><a href="#">Indor</a></li>
+      </ul>
+    </div> 
+
+   
   </article>
 </section>
+
 <footer>
   <p>Footer</p>
 </footer>
 
  <script>
+      
       var city = ["Amravati", "Akola", "Pune", "Mumbai"];
-      document.getElementById("demo1").innerHTML= city;
       function myFunction() {
         newCity = document.getElementById('AddCity').value;
         city.push(newCity);
         document.getElementById("demo1").innerHTML = city;
       }
+    
+    function mySearchFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+       }
+    }
   </script>
-
-</body>
+  </body>
 </html>

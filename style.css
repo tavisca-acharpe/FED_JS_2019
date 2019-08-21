@@ -54,7 +54,7 @@ footer {
 /*************************************************************/
 /*Part 2 Side menu */
 
-ul {
+ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -62,7 +62,7 @@ ul {
   background-color: #f1f1f1;
 }
 
-li a {
+ li a {
   display: block;
   color: #000;
   padding: 18px 16px;
@@ -104,3 +104,6 @@ li a:hover:not(.active) {
 
 
 /*************************************************************/
+.search-container{
+      
+}
