@@ -6,7 +6,7 @@
   <script type="text/javascript" src="script.js"></script>
 </head>
 
-<body>
+<body onload="preList()">
 <h2>CSS Layout Float</h2>
 <header>
   <h2>Header</h2>
@@ -25,19 +25,12 @@
   <article>
    
     <div class="search-container">   
-        <input type="text" list="datalist" onkeyup="suggest(this.value)" id ="myInput" placeholder="Search for city......">
-         <input onclick="myFunction()" type="button" value="add">
+        <input type="text" list="datalist" onkeyup="search(this.value)" id ="myInput" placeholder="Search for city......">
+         <input onclick="myFunction()" type="button" value="Add">
         <ul id="myUL" >
-              <li>Amravati</li>
-              <li>Akola</li>
-              <li>Pune</li>
-              <li>Mumbai</li>
             </ul>
-            <datalist id="datalist">
-               <option value="Amravati">
-               <option value="Akola">
-              <option value="Pune">
-              <option value="Mumbai">
+
+            <datalist id="datalist" >
             </datalist>
     </div> 
   </article>
