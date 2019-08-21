@@ -1,6 +1,5 @@
   
-  var listCity = [];
-
+  var listCity = ["Amravti","Akola","Pune","Mumbai"];
       function myFunction() {        
          var inputValue = document.getElementById("myInput").value;
         var li = document.createElement("li");
