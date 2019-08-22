@@ -100,6 +100,7 @@ function search(value) {
   }
  }
 
+
 function removeRow(oButton) {
   var table = document.getElementById('table');
   var index = oButton.parentNode.parentNode.rowIndex;
@@ -121,7 +122,7 @@ function EditRow(oButton) {
         {
           if(inputValue===listCity[i])
           {
-            flag=1;
+            flag=1;           //check for already present
           }
         }
         if(flag===1)
