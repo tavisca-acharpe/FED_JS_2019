@@ -18,6 +18,7 @@ function preList()
     buttonEdit = document.createElement("button");
     buttonDelete.innerHTML="Delete";
     buttonEdit.innerHTML="Edit";
+    buttonEdit.setAttribute('onclick', 'EditRow(this)');
     buttonDelete.setAttribute('onclick', 'removeRow(this)');
 
     tdData.appendChild(t);
@@ -47,6 +48,7 @@ function preList()
   buttonEdit = document.createElement("button");
   buttonDelete.innerHTML="Delete";
   buttonEdit.innerHTML="Edit";
+  buttonEdit.setAttribute('onclick', 'EditRow(this)');
   buttonDelete.setAttribute('onclick', 'removeRow(this)');
   tdData.appendChild(t);
   tdEdit.appendChild(buttonEdit);
@@ -102,4 +104,31 @@ function removeRow(oButton) {
   var table = document.getElementById('table');
   table.deleteRow(oButton.parentNode.parentNode.rowIndex);     
   localStorage.removeItem("city");
+}
+
+function EditRow(oButton) {
+  var table=document.getElementById('table').rows;
+  var cell=table[oButton.parentNode.parentNode.rowIndex].cells;
+  var inputValue = prompt("Enter your new city name : ");
+  inputValue=inputValue.toUpperCase();
+  var flag=0;
+   if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+      for(let i=0; i<listCity.length;i++)
+        {
+          if(inputValue===listCity[i])
+          {
+            flag=1;
+          }
+        }
+        if(flag===1)
+        {
+            alert(inputValue +" City is already present");
+        }
+        else
+        {
+          cell[0].innerHTML=inputValue; 
+        }
+ }
 }
