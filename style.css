@@ -127,6 +127,8 @@ table{
   padding: 10px 10px 10px;
   text-align: center;
   background-color: #f1f1f1;
+  height:70%; 
+  width:10%;
   overflow:auto;
 }
 
