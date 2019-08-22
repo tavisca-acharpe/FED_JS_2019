@@ -102,8 +102,10 @@ function search(value) {
 
 function removeRow(oButton) {
   var table = document.getElementById('table');
-  table.deleteRow(oButton.parentNode.parentNode.rowIndex);     
-  localStorage.removeItem("city");
+  var index = oButton.parentNode.parentNode.rowIndex;
+  table.deleteRow(index);    
+  listCity.splice(index, 1);
+  localStorage.setItem("city", JSON.stringify(listCity));
 }
 
 function EditRow(oButton) {
@@ -129,6 +131,9 @@ function EditRow(oButton) {
         else
         {
           cell[0].innerHTML=inputValue; 
+           var index = oButton.parentNode.parentNode.rowIndex;
+          listCity[index]=inputValue;
+          localStorage.setItem("city", JSON.stringify(listCity));
         }
  }
 }
