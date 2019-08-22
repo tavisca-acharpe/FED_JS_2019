@@ -1,36 +1,66 @@
-  
 var listCity = [];
+var data = localStorage.getItem("city");
+var retrievedData = JSON.parse(data);
 
 function preList()
 {
-  var data = localStorage.getItem("city");
-  var retrievedData = JSON.parse(data);
   var li,t;
  
   for(let i=0; i<retrievedData.length;i++)
   {
-     li = document.createElement("li");
-     t = document.createTextNode(retrievedData[i]);
-     li.appendChild(t);
-    document.getElementById("myUL").appendChild(li);
+    tdData = document.createElement("td");
+    tdEdit = document.createElement("td");
+    tdDelete = document.createElement("td");
+    tr = document.createElement("tr");
+    t = document.createTextNode(retrievedData[i]);
+
+    buttonDelete = document.createElement("button");
+    buttonEdit = document.createElement("button");
+    buttonDelete.innerHTML="Delete";
+    buttonEdit.innerHTML="Edit";
+    buttonDelete.setAttribute('onclick', 'removeRow(this)');
+
+    tdData.appendChild(t);
+    tdEdit.appendChild(buttonEdit);
+    tdDelete.appendChild(buttonDelete);
+
+    tr.appendChild(tdData);
+    tr.appendChild(tdEdit);
+    tr.appendChild(tdDelete);
+
+    document.getElementById("table").appendChild(tr);
   }
   listCity=retrievedData;
 }
-
-  alert(retrievedData);
  
-      function myFunction() { 
-       var flag=0;       
-        var inputValue = document.getElementById("myInput").value;
-        inputValue=inputValue.toUpperCase();
-        var li = document.createElement("li");
-        t = document.createTextNode(inputValue);
-        li.appendChild(t);  
+ function AddFunction() { 
+  var flag=0;       
+  var inputValue = document.getElementById("myInput").value;
+  inputValue=inputValue.toUpperCase();
+
+  tdData = document.createElement("td");
+  tdEdit = document.createElement("td");
+  tdDelete = document.createElement("td");
+  tr = document.createElement("tr"); 
+  t = document.createTextNode(inputValue);
+  buttonDelete = document.createElement("button");
+  buttonEdit = document.createElement("button");
+  buttonDelete.innerHTML="Delete";
+  buttonEdit.innerHTML="Edit";
+  buttonDelete.setAttribute('onclick', 'removeRow(this)');
+  tdData.appendChild(t);
+  tdEdit.appendChild(buttonEdit);
+  tdDelete.appendChild(buttonDelete);
+
+  tr.appendChild(tdData);
+  tr.appendChild(tdEdit);
+  tr.appendChild(tdDelete);
+
       
-        if (inputValue === '') {
-         alert("You must write something!");
-        } else {
-        for(let i=0; i<listCity.length;i++)
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+      for(let i=0; i<listCity.length;i++)
         {
           if(inputValue===listCity[i])
           {
@@ -39,36 +69,37 @@ function preList()
         }
         if(flag===1)
         {
-            alert("already present");
+            alert(inputValue +" City is already present");
         }
         else
         {
-        document.getElementById("myUL").appendChild(li);
-        listCity.push(inputValue);
-        localStorage.setItem("city", JSON.stringify(listCity));
+          document.getElementById("table").appendChild(tr);
+          listCity.push(inputValue);
+          localStorage.setItem("city", JSON.stringify(listCity));
         }
-      }
-        document.getElementById("myInput").value = "";
-      }
+    }
+  document.getElementById("myInput").value = "";
+}
 
 
-    function search(value) {
-      data = localStorage.getItem("city");
-      retrievedData = JSON.parse(data);
-    document.getElementById("datalist").innerHTML = '';
-      for (var i = 0; i<retrievedData.length; i++) {
-       if(((retrievedData[i].toLowerCase()).indexOf(value.toLowerCase()))>-1)
-        {
-        var node = document.createElement("option");
-        var val = document.createTextNode(retrievedData[i]);
-        node.appendChild(val);
-        document.getElementById("datalist").appendChild(node);
-        }
-     }
+function search(value) {
+  data = localStorage.getItem("city");
+  retrievedData = JSON.parse(data);
+
+  document.getElementById("datalist").innerHTML = '';
+  for (var i = 0; i<retrievedData.length; i++) {
+    if(((retrievedData[i].toLowerCase()).indexOf(value.toLowerCase()))>-1)
+    {
+      var node = document.createElement("option");
+      var val = document.createTextNode(retrievedData[i]);
+      node.appendChild(val);
+      document.getElementById("datalist").appendChild(node);
+    }
+  }
  }
 
-
- function deleteElement(){
-  var x = document.getElementById("datalist");
-  x.remove(x.selectedIndex);
- }
+function removeRow(oButton) {
+  var table = document.getElementById('table');
+  table.deleteRow(oButton.parentNode.parentNode.rowIndex);     
+  localStorage.removeItem("city");
+}
