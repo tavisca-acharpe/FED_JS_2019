@@ -4,26 +4,26 @@ var retrievedData = JSON.parse(data);
 
 function CreateTableData(text)
 {
-    tdData = document.createElement("td");
-    tdEdit = document.createElement("td");
-    tdDelete = document.createElement("td");
-    tr = document.createElement("tr");
-    t = document.createTextNode(text);
+  tdData = document.createElement("td");
+  tdEdit = document.createElement("td");
+  tdDelete = document.createElement("td");
+  tr = document.createElement("tr");
+  t = document.createTextNode(text);
 
-    buttonDelete = document.createElement("button");
-    buttonEdit = document.createElement("button");
-    buttonDelete.innerHTML="Delete";
-    buttonEdit.innerHTML="Edit";
-    buttonEdit.setAttribute('onclick', 'EditRow(this)');
-    buttonDelete.setAttribute('onclick', 'removeRow(this)');
+  buttonDelete = document.createElement("button");
+  buttonEdit = document.createElement("button");
+  buttonDelete.innerHTML="Delete";
+  buttonEdit.innerHTML="Edit";
+  buttonEdit.setAttribute('onclick', 'EditRow(this)');
+  buttonDelete.setAttribute('onclick', 'removeRow(this)');
 
-    tdData.appendChild(t);
-    tdEdit.appendChild(buttonEdit);
-    tdDelete.appendChild(buttonDelete);
+  tdData.appendChild(t);
+  tdEdit.appendChild(buttonEdit);
+  tdDelete.appendChild(buttonDelete);
 
-    tr.appendChild(tdData);
-    tr.appendChild(tdEdit);
-    tr.appendChild(tdDelete);
+  tr.appendChild(tdData);
+  tr.appendChild(tdEdit);
+  tr.appendChild(tdDelete);
 }
 
 function previousDataDisplay()
@@ -36,35 +36,46 @@ function previousDataDisplay()
   listCity=retrievedData;
 }
  
- function AddFunction() { 
-  var flag=0;       
-  var inputValue = document.getElementById("myInput").value;
-  inputValue=inputValue.toUpperCase();
-
+function checkInputConditions(inputValue)
+{
+  var flag=0; 
   if (inputValue === '') {
     alert("You must write something!");
-  } else {
-      for(let i=0; i<listCity.length;i++)
-        {
-          if(inputValue===listCity[i])
-          {
-            flag=1;
-          }
-        }
-        if(flag===1)
-        {
-            alert(inputValue +" City is already present");
-        }
-        else
-        {
-          CreateTableData(inputValue);
-          document.getElementById("table").appendChild(tr);
-          listCity.push(inputValue);
-          localStorage.setItem("city", JSON.stringify(listCity));
-        }
+  } else 
+  {
+    for(let i=0; i<listCity.length;i++)
+    {
+      if(inputValue===listCity[i])
+      {
+        flag=1;
+      }
+    }
+    if(flag===1)
+    {
+      alert(inputValue +" City is already present");
+    }
+    else
+    {
+      return 1;
+    }
+  }
+  return 0;
+}
+
+function AddFunction() 
+{ 
+  var inputValue = document.getElementById("myInput").value;
+  inputValue=inputValue.toUpperCase();
+    if(checkInputConditions(inputValue))
+    {
+      CreateTableData(inputValue);
+      document.getElementById("table").appendChild(tr);
+      listCity.push(inputValue);
+      localStorage.setItem("city", JSON.stringify(listCity));
     }
   document.getElementById("myInput").value = "";
 }
+
 
 
 function search(value) {
@@ -96,27 +107,11 @@ function EditRow(oButton) {
   var cell=table[oButton.parentNode.parentNode.rowIndex].cells;
   var inputValue = prompt("Enter your new city name : ");
   inputValue=inputValue.toUpperCase();
-  var flag=0;
-   if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-      for(let i=0; i<listCity.length;i++)
-        {
-          if(inputValue===listCity[i])
-          {
-            flag=1;           //check for already present
-          }
-        }
-        if(flag===1)
-        {
-            alert(inputValue +" City is already present");
-        }
-        else
-        {
-          cell[0].innerHTML=inputValue; 
-          var index = oButton.parentNode.parentNode.rowIndex;
-          listCity[index]=inputValue;
-          localStorage.setItem("city", JSON.stringify(listCity));
-        }
- }
+  if(checkInputConditions(inputValue))
+  {
+    cell[0].innerHTML=inputValue; 
+    var index = oButton.parentNode.parentNode.rowIndex;
+    listCity[index]=inputValue;
+    localStorage.setItem("city", JSON.stringify(listCity));
+  }
 }
