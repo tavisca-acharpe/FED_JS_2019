@@ -2,17 +2,13 @@ var listCity = [];
 var data = localStorage.getItem("city");
 var retrievedData = JSON.parse(data);
 
-function preList()
+function CreateTableData(text)
 {
-  var li,t;
- 
-  for(let i=0; i<retrievedData.length;i++)
-  {
     tdData = document.createElement("td");
     tdEdit = document.createElement("td");
     tdDelete = document.createElement("td");
     tr = document.createElement("tr");
-    t = document.createTextNode(retrievedData[i]);
+    t = document.createTextNode(text);
 
     buttonDelete = document.createElement("button");
     buttonEdit = document.createElement("button");
@@ -28,7 +24,13 @@ function preList()
     tr.appendChild(tdData);
     tr.appendChild(tdEdit);
     tr.appendChild(tdDelete);
+}
 
+function previousDataDisplay()
+{
+  for(let i=0; i<retrievedData.length;i++)
+  {
+    CreateTableData(retrievedData[i]);
     document.getElementById("table").appendChild(tr);
   }
   listCity=retrievedData;
@@ -39,26 +41,6 @@ function preList()
   var inputValue = document.getElementById("myInput").value;
   inputValue=inputValue.toUpperCase();
 
-  tdData = document.createElement("td");
-  tdEdit = document.createElement("td");
-  tdDelete = document.createElement("td");
-  tr = document.createElement("tr"); 
-  t = document.createTextNode(inputValue);
-  buttonDelete = document.createElement("button");
-  buttonEdit = document.createElement("button");
-  buttonDelete.innerHTML="Delete";
-  buttonEdit.innerHTML="Edit";
-  buttonEdit.setAttribute('onclick', 'EditRow(this)');
-  buttonDelete.setAttribute('onclick', 'removeRow(this)');
-  tdData.appendChild(t);
-  tdEdit.appendChild(buttonEdit);
-  tdDelete.appendChild(buttonDelete);
-
-  tr.appendChild(tdData);
-  tr.appendChild(tdEdit);
-  tr.appendChild(tdDelete);
-
-      
   if (inputValue === '') {
     alert("You must write something!");
   } else {
@@ -75,6 +57,7 @@ function preList()
         }
         else
         {
+          CreateTableData(inputValue);
           document.getElementById("table").appendChild(tr);
           listCity.push(inputValue);
           localStorage.setItem("city", JSON.stringify(listCity));
@@ -99,7 +82,6 @@ function search(value) {
     }
   }
  }
-
 
 function removeRow(oButton) {
   var table = document.getElementById('table');
@@ -132,7 +114,7 @@ function EditRow(oButton) {
         else
         {
           cell[0].innerHTML=inputValue; 
-           var index = oButton.parentNode.parentNode.rowIndex;
+          var index = oButton.parentNode.parentNode.rowIndex;
           listCity[index]=inputValue;
           localStorage.setItem("city", JSON.stringify(listCity));
         }
