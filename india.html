@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html >
+<head>
+<title>CSS Template</title>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body onload="previousDataDisplay()">
+<h2>Search City</h2>
+<header>
+  <h2>Header</h2>
+</header>
+<section>
+  <nav>
+    <ul>
+      <li><a class="active" href="index.html">Country</a></li>
+      <li><a href="#India">India</a></li>
+      <li><a href="#London">London</a></li>
+      <li><a href="#Paris">Paris</a></li>
+       <li><a style="color:red;" href="index.html">Logout</a></li>
+    </ul>
+  </nav>
+  
+  <article>
+   
+    <div class="search-container" >   
+        <input type="text" list="datalist" onkeyup="search(this.value)" id ="myInput" placeholder="Search for city......">
+         <input onclick="AddFunction()" type="button" value="Add">      
+            <datalist id="datalist" >
+            </datalist>
+    </div> 
+    <table id="table" >
+    </table>
+  </article>
+</section>
+
+<footer>
+  <p>Footer</p>
+</footer>
+  </body>
+</html>
